@@ -1,13 +1,10 @@
 package hello.hellospring;
 
-import hello.hellospring.repogitory.JpaMemberRepogitory;
 import hello.hellospring.repogitory.MemberRepogitory;
 import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import javax.persistence.EntityManager;
 
 @Configuration
 public class SpringConfig {
@@ -19,24 +16,37 @@ public class SpringConfig {
 //        this.dataSource = dataSource;
 //    }
 
-    private EntityManager em;
+//    private EntityManager em;
+//
+//    @Autowired
+//    public SpringConfig(EntityManager em) {
+//        this.em = em;
+//    }
+
+    private final MemberRepogitory memberRepogitory;
 
     @Autowired
-    public SpringConfig(EntityManager em) {
-        this.em = em;
+    public SpringConfig(MemberRepogitory memberRepogitory) {
+        this.memberRepogitory = memberRepogitory;
     }
 
+//    @Bean
+//    public MemberService memberService() {
+//        return new MemberService(memberRepogitory());
+//    }
     @Bean
     public MemberService memberService() {
-        return new MemberService(memberRepogitory());
+        return new MemberService(memberRepogitory);
     }
 
-    @Bean
-    public MemberRepogitory memberRepogitory() {
+//    @Bean
+//    public MemberRepogitory memberRepogitory() {
 //        return new MemoryMemberRepogitory();
 //        return new JdbcTemplateMemberRepogitory(dataSource);
-        return new JpaMemberRepogitory(em);
-    }
+//        return new JpaMemberRepogitory(em);
+
+//    }
+
 
 
 }
