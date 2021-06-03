@@ -16,6 +16,16 @@ repositories { // 각종 의존성들을 어떤 원격 저장소에서 받을 �
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // lombok
+    implementation 'org.projectlombok:lombok:1.18.18'
+    annotationProcessor 'org.projectlombok:lombok:1.18.18'
+    testImplementation 'org.projectlombok:lombok:1.18.18'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.18'
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'com.h2database:h2'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
