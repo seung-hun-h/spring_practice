@@ -1,7 +1,9 @@
 package com.seunghun.springboot.web.web;
 
 import com.seunghun.springboot.web.service.PostsService;
+import com.seunghun.springboot.web.web.dto.PostsResponseDto;
 import com.seunghun.springboot.web.web.dto.PostsSaveRequestDto;
+import com.seunghun.springboot.web.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +18,15 @@ public class PostsApiController {
         return postsService.save(requestDto);
     }
 
+    @PutMapping("/api/v1/posts/{id}")
+    public Long update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto requestDto) {
+        return postsService.update(id, requestDto);
+    }
+
+    @GetMapping("/api/v1/posts/{id}")
+    public PostsResponseDto findById(@PathVariable Long id) {
+        return postsService.findById(id);
+    }
 }
 /**
  * 스프링에서 Bean을 주입하는 방식
