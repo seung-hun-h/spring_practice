@@ -1,6 +1,6 @@
-package com.seunghun.springboot.web.web.dto;
+package com.seunghun.springboot.web.dto;
 
-import com.seunghun.springboot.web.domain.posts.Posts;
+import com.seunghun.springboot.domain.posts.Posts;
 import lombok.Getter;
 
 import java.time.LocalDateTime;

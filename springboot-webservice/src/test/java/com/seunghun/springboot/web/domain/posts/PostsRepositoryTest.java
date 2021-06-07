@@ -1,6 +1,7 @@
 package com.seunghun.springboot.web.domain.posts;
 
-import org.apache.tomcat.jni.Local;
+import com.seunghun.springboot.domain.posts.Posts;
+import com.seunghun.springboot.domain.posts.PostsRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -8,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -18,7 +18,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @SpringBootTest
 public class PostsRepositoryTest {
 
-    @Autowired PostsRepository postsRepository;
+    @Autowired
+    PostsRepository postsRepository;
 
     @AfterEach // JUnit에서 단위 테스트 끝날 때마다 수행되는 메소드 지정
     public void cleanup() {

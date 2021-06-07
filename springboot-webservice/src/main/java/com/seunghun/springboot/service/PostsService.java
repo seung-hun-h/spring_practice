@@ -1,11 +1,11 @@
-package com.seunghun.springboot.web.service;
+package com.seunghun.springboot.service;
 
-import com.seunghun.springboot.web.domain.posts.Posts;
-import com.seunghun.springboot.web.domain.posts.PostsRepository;
-import com.seunghun.springboot.web.web.dto.PostsListResponseDto;
-import com.seunghun.springboot.web.web.dto.PostsResponseDto;
-import com.seunghun.springboot.web.web.dto.PostsSaveRequestDto;
-import com.seunghun.springboot.web.web.dto.PostsUpdateRequestDto;
+import com.seunghun.springboot.domain.posts.Posts;
+import com.seunghun.springboot.domain.posts.PostsRepository;
+import com.seunghun.springboot.web.dto.PostsListResponseDto;
+import com.seunghun.springboot.web.dto.PostsResponseDto;
+import com.seunghun.springboot.web.dto.PostsSaveRequestDto;
+import com.seunghun.springboot.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

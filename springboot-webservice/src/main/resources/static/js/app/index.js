@@ -31,7 +31,6 @@ var index = {
             author: author.value,
             content: author.value
         };
-        console.log(data);
         fetch("/api/v1/posts", {
             method: "POST",
             dataType: "json",
@@ -39,7 +38,15 @@ var index = {
             headers:{
                 'Content-Type': 'application/json'
               }
-        }).then(function(res){ return res.json() })
+        }).then(function(res){
+            if(!res.ok) {
+                var err = new Error("HTTP status code: " + res.status);
+                err.response = res.body;
+                err.status = res.status;
+                throw err;
+            }
+            return res.json();
+        })
           .then(function(res) {
             alert("글이 등록 되었습니다.");
             window.location.href = "/";
@@ -66,7 +73,15 @@ var index = {
             headers: {'Content-Type': 'application/json; charset=utf-8'},
             body: JSON.stringify(data)
         })
-        .then(function(res) { return res.json })
+        .then(function(res) {
+            if(!res.ok) {
+                var err = new Error("HTTP status code: " + res.status);
+                err.response = res;
+                err.status = res.status;
+                throw err;
+            }
+            return res.json();
+         })
         .then(function(res) {
             alert("글이 수정 되었습니다.");
             window.location.href = "/";
@@ -84,7 +99,15 @@ var index = {
             dataType: 'json',
             headers: { 'Content-Type': 'application/json'}
         })
-        .then(function(res){ return res.json() })
+        .then(function(res){
+            if(!res.ok) {
+                var err = new Error("HTTP status code: " + res.status);
+                err.response = res;
+                err.status = res.status;
+                throw err;
+            }
+            return res.json();
+         })
         .then(function() {
             alert("글이 삭제 되었습니다.");
             window.location.href = "/";

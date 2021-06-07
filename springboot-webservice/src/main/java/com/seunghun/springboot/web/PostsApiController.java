@@ -1,9 +1,9 @@
-package com.seunghun.springboot.web.web;
+package com.seunghun.springboot.web;
 
-import com.seunghun.springboot.web.service.PostsService;
-import com.seunghun.springboot.web.web.dto.PostsResponseDto;
-import com.seunghun.springboot.web.web.dto.PostsSaveRequestDto;
-import com.seunghun.springboot.web.web.dto.PostsUpdateRequestDto;
+import com.seunghun.springboot.web.dto.PostsSaveRequestDto;
+import com.seunghun.springboot.service.PostsService;
+import com.seunghun.springboot.web.dto.PostsResponseDto;
+import com.seunghun.springboot.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

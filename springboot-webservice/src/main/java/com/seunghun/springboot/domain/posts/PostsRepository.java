@@ -1,4 +1,4 @@
-package com.seunghun.springboot.web.domain.posts;
+package com.seunghun.springboot.domain.posts;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
