@@ -16,6 +16,7 @@ repositories { // 각종 의존성들을 어떤 원격 저장소에서 받을 �
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-mustache'
 
     // lombok
     implementation 'org.projectlombok:lombok:1.18.18'
