@@ -3,7 +3,7 @@ package hello.core.discount;
 import hello.core.member.Grade;
 import hello.core.member.Member;
 
-public class RateDiscountPolicy implements DistcountPolicy {
+public class RateDiscountPolicy implements DiscountPolicy {
 
     private int discountRate = 10;
     @Override
