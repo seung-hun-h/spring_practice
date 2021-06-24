@@ -18,7 +18,7 @@ class RateDisCountPolicyTest {
         Member member = new Member(1L, "memberVIP", Grade.VIP);
 
         // when
-        int discountPrice = distcountPolicy.discountPrice(member, 10000);
+        int discountPrice = distcountPolicy.discount(member, 10000);
 
         // then
         assertThat(discountPrice).isEqualTo(1000);
@@ -31,7 +31,7 @@ class RateDisCountPolicyTest {
         Member member = new Member(2L, "memberBASIC", Grade.BASIC);
 
         // when
-        int discountPrice = distcountPolicy.discountPrice(member, 10000);
+        int discountPrice = distcountPolicy.discount(member, 10000);
 
         // then
         assertThat(discountPrice).isEqualTo(0);
