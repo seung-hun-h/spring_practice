@@ -19,7 +19,7 @@ public class Category {
     private String name;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "category_item",
+    @JoinTable(name = "category_item", // 테이블 생성
             joinColumns = @JoinColumn(name = "category_id"),
             inverseJoinColumns = @JoinColumn(name = "item_id"))
     private List<Item> items = new ArrayList<>();
