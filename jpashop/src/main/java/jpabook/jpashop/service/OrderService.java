@@ -50,17 +50,19 @@ public class OrderService {
     /**
      * 주문 취소
      */
-    public void cancleOrder(Long orderId) {
+    @Transactional
+    public void cancelOrder(Long orderId) {
 
         // 주문 엔티티 조회
         Order order = orderRepository.findOne(orderId);
-        order.cancle();
+        order.cancel();
     }
 
     /**
      * 주문 검색
      */
-//    public List<Order> findOrders(OrderSearch orderSearch) {
-//
-//    }
+    public List<Order> findOrders(OrderSearch orderSearch) {
+        List<Order> orders = orderRepository.findAll(orderSearch);
+        return orders;
+    }
 }

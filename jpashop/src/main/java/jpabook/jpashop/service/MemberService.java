@@ -17,8 +17,6 @@ public class MemberService {
 
     /**
      * 회원 가입
-     * @param member
-     * @return id
      */
     @Transactional
     public Long join(Member member) {
