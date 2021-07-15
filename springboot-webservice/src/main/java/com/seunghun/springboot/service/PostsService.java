@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 @Service
 public class PostsService {
 
@@ -43,7 +44,7 @@ public class PostsService {
 
     }
 
-    @Transactional(readOnly = true)
+
     public PostsResponseDto findById (Long id) {
         Posts entity = postsRepository.findById(id)
                 .orElseThrow(() ->
@@ -51,7 +52,6 @@ public class PostsService {
         return new PostsResponseDto(entity);
     }
 
-    @Transactional(readOnly = true)
     public List<PostsListResponseDto> findAllDesc() {
         return postsRepository.findAllDesc().stream()
                 .map(PostsListResponseDto::new)
