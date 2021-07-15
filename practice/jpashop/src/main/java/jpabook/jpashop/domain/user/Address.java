@@ -1,11 +1,12 @@
-package jpabook.jpashop.domain;
+package jpabook.jpashop.domain.user;
 
 import lombok.Getter;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 
-@Embeddable
 @Getter
+@Embeddable
 public class Address {
 
     private String city;
@@ -13,7 +14,6 @@ public class Address {
     private String zipcode;
 
     protected Address() {
-
     }
 
     public Address(String city, String street, String zipcode) {

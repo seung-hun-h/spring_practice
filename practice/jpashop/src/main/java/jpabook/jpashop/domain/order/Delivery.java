@@ -1,11 +1,11 @@
-package jpabook.jpashop.domain;
+package jpabook.jpashop.domain.order;
 
+import jpabook.jpashop.domain.user.Address;
 import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 
-@Getter @Setter
+@Getter
 @Entity
 public class Delivery {
 
@@ -14,7 +14,7 @@ public class Delivery {
     @Column(name = "delivery_id")
     private Long id;
 
-    @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, mappedBy ="delivery")
     private Order order;
 
     @Embedded
@@ -23,3 +23,4 @@ public class Delivery {
     @Enumerated(EnumType.STRING)
     private DeliveryStatus status;
 }
+
