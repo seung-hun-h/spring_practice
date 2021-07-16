@@ -33,8 +33,22 @@ public class Order extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
-    @Builder
-    public Order(User user, Delivery delivery, OrderStatus orderStatus) {
+    public static Order createOrder(User user, Delivery delivery, OrderItem... orderItems) {
+        Order order = new Order(user, delivery, OrderStatus.ORDER);
+
+        for (OrderItem orderItem : orderItems) {
+            order.addOrderItem(orderItem);
+        }
+
+        return order;
+    }
+
+    public void addOrderItem(OrderItem orderItem) {
+        orderItems.add(orderItem);
+        orderItem.addOrderInfo(this);
+    }
+
+    protected Order(User user, Delivery delivery, OrderStatus orderStatus) {
         this.user = user;
         this.delivery = delivery;
         this.orderStatus = orderStatus;
@@ -43,5 +57,21 @@ public class Order extends BaseTimeEntity {
     public void update(Delivery delivery, OrderStatus orderStatus) {
         this.delivery = delivery;
         this.orderStatus = orderStatus;
+    }
+
+    public void cancel() {
+        if (delivery.getStatus() == DeliveryStatus.COMP) {
+            throw new IllegalStateException("이미 배송 완료된 주문은 취소할 수 없습니다");
+        }
+
+        orderStatus = OrderStatus.CANCEL;
+        for (OrderItem orderItem : orderItems) {
+            orderItem.cancel();
+        }
+    }
+
+    public int getTotalPrice() {
+        int totalPrice = orderItems.stream().mapToInt(OrderItem::getTotalPrice).sum();
+        return totalPrice;
     }
 }

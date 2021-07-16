@@ -23,14 +23,31 @@ public class OrderItem {
     @JoinColumn(name = "order_id")
     private Order order;
 
-    private int orderPrice;
-    private int count;
+    private int orderPrice; // 주문 가격
+    private int count; // 주문 수량
 
-    @Builder
-    public OrderItem(Item item, Order order, int orderPrice, int count) {
+    protected OrderItem(Item item, int orderPrice, int count) {
         this.item = item;
-        this.order = order;
         this.orderPrice = orderPrice;
         this.count = count;
+    }
+
+    public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
+        item.removeStock(count);
+        OrderItem orderItem = new OrderItem(item, orderPrice, count);
+
+        return orderItem;
+    }
+
+    public void addOrderInfo(Order order) {
+        this.order = order;
+    }
+
+    public void cancel() { // 주문취소
+        getItem().addStock(count);
+    }
+
+    public int getTotalPrice() {
+        return orderPrice * count;
     }
 }

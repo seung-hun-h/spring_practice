@@ -2,7 +2,7 @@ package jpabook.jpashop.service;
 
 import jpabook.jpashop.domain.user.Address;
 import jpabook.jpashop.domain.user.User;
-import jpabook.jpashop.domain.user.UserRepository;
+import jpabook.jpashop.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,7 +34,7 @@ public class UserService {
         return userId;
     }
 
-    public User findById(Long userId) {
+    public User findUser(Long userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() ->
                         new IllegalArgumentException("해당 사용자가 없습니다. id = " + userId));
@@ -43,7 +43,7 @@ public class UserService {
     }
 
     public List<User> findAll() {
-        return userRepository.findAll().stream().collect(Collectors.toList());
+        return userRepository.findAll();
     }
 
     private void vaildDuplicateUser(User user) {
