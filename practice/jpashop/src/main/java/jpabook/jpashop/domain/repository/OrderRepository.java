@@ -11,6 +11,7 @@ import jpabook.jpashop.domain.order.OrderStatus;
 import jpabook.jpashop.domain.order.QOrder;
 import jpabook.jpashop.domain.user.QUser;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
@@ -37,7 +38,7 @@ public class OrderRepository {
                 .select(order)
                 .from(order)
                 .join(order.user, user)
-                .where(statusEqual(orderSearch.getOrderStatus()), nameLike(orderSearch.getUserName()))
+                .where(statusEq(orderSearch.getOrderStatus()), nameLike(orderSearch.getUserName()))
                 .limit(1000)
                 .fetch();
     }
@@ -50,7 +51,7 @@ public class OrderRepository {
     }
 
 
-    private BooleanExpression statusEqual(OrderStatus statusCond) {
+    private BooleanExpression statusEq(OrderStatus statusCond) {
         if (statusCond == null) {
             return null;
         }

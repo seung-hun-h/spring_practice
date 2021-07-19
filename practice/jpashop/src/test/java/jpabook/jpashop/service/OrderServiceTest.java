@@ -1,7 +1,6 @@
 package jpabook.jpashop.service;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import jpabook.jpashop.config.TestConfig;
 import jpabook.jpashop.domain.item.Book;
 import jpabook.jpashop.domain.order.*;
 import jpabook.jpashop.domain.repository.OrderRepository;
@@ -9,19 +8,16 @@ import jpabook.jpashop.domain.user.Address;
 import jpabook.jpashop.domain.user.Role;
 import jpabook.jpashop.domain.user.User;
 import jpabook.jpashop.exception.NotEnoughStockException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 import java.util.List;
 
@@ -31,16 +27,18 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(SpringExtension.class)
 @Transactional
 @SpringBootTest
-@Import(TestConfig.class)
 class OrderServiceTest {
 
-    @PersistenceContext
-    EntityManager em;
+    @Autowired EntityManager em;
+    @Autowired OrderService orderService;
+    @Autowired OrderRepository orderRepository;
 
-    @Autowired
-    OrderService orderService;
-    @Autowired
-    OrderRepository orderRepository;
+    JPAQueryFactory jpaQueryFactory;
+
+    @BeforeEach
+    void init() {
+        jpaQueryFactory = new JPAQueryFactory(em);
+    }
 
     @Test
     public void 주문() {
