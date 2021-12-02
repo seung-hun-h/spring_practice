@@ -26,14 +26,14 @@ public class LogTraceAdvice implements MethodInterceptor {
 
       status = logTrace.begin(message);
 
-      invocation.proceed();
+      Object result = invocation.proceed();
 
       logTrace.end(status);
+      return result;
 
     } catch (Exception e) {
       logTrace.exception(status, e);
+      throw e;
     }
-
-    return null;
   }
 }
