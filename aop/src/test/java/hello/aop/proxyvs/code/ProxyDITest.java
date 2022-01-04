@@ -26,6 +26,4 @@ public class ProxyDITest {
     log.info("memberServiceImple class={}", memberServiceImpl.getClass());
     memberServiceImpl.hello("hello");
   } 
-  
-  
 }
