@@ -9,10 +9,10 @@ import java.sql.*;
 import java.util.NoSuchElementException;
 
 @Slf4j
-public class MemberRepositoryV1 {
+public class MemberRepositoryV2 {
     private final DataSource dataSource;
 
-    public MemberRepositoryV1(DataSource dataSource) {
+    public MemberRepositoryV2(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
@@ -62,6 +62,32 @@ public class MemberRepositoryV1 {
         }
     }
 
+    public Member findMember(Connection connection, String memberId) throws SQLException {
+        String sql = "select * from member where member_id = ?";
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, memberId);
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                Member member = new Member();
+                member.setMemberId(resultSet.getString("member_id"));
+                member.setMoney(resultSet.getInt("money"));
+                return member;
+            }
+            throw new NoSuchElementException("member not found. memberId = " + memberId);
+        } catch (SQLException e) {
+            log.error("db error", e);
+            throw e;
+        } finally {
+            JdbcUtils.closeResultSet(resultSet);
+            JdbcUtils.closeStatement(preparedStatement);
+        }
+    }
+
     public void updateMember(String memberId, int money) throws SQLException {
         String sql = "update member set money = ? where member_id = ?";
         Connection connection = null;
@@ -78,6 +104,23 @@ public class MemberRepositoryV1 {
             throw e;
         } finally {
             close(connection, preparedStatement, null);
+        }
+    }
+
+    public void updateMember(Connection connection, String memberId, int money) throws SQLException {
+        String sql = "update member set money = ? where member_id = ?";
+        PreparedStatement preparedStatement = null;
+
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, money);
+            preparedStatement.setString(2, memberId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            log.error("db error", e);
+            throw e;
+        } finally {
+            JdbcUtils.closeStatement(preparedStatement);
         }
     }
 

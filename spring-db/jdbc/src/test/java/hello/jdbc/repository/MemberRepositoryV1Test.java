@@ -4,7 +4,6 @@ import com.zaxxer.hikari.HikariDataSource;
 import hello.jdbc.domain.Member;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import java.sql.SQLException;
 import java.util.NoSuchElementException;
@@ -20,7 +19,7 @@ class MemberRepositoryV1Test {
     @BeforeEach
     void setUp() {
 //        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-//        dataSource.setUrl(URL);
+//        dataSource.setUrl(URL);ƒ
 //        dataSource.setUsername(USERNAME);
 //        dataSource.setPassword(PASSWORD);
 
