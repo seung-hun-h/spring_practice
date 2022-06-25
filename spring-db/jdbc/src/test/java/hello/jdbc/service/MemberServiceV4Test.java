@@ -1,7 +1,7 @@
 package hello.jdbc.service;
 
 import hello.jdbc.domain.Member;
-import hello.jdbc.repository.MemberRepositoryV3;
+import hello.jdbc.repository.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
@@ -19,16 +19,16 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @Slf4j
 @SpringBootTest
-class MemberServiceV3_4Test {
+class MemberServiceV4Test {
 
     public static final String MEMBER_A = "memberA";
     public static final String MEMBER_B = "memberB";
     public static final String MEMBER_EX = "ex";
 
     @Autowired
-    private MemberRepositoryV3 memberRepository;
+    private MemberRepository memberRepository;
     @Autowired
-    private MemberServiceV3_3 memberService;
+    private MemberServiceV4 memberService;
 
     @AfterEach
     void tearDown() throws SQLException {
@@ -87,13 +87,13 @@ class MemberServiceV3_4Test {
         }
 
         @Bean
-        public MemberRepositoryV3 memberRepository() {
-            return new MemberRepositoryV3(dataSource);
+        public MemberRepository memberRepository() {
+            return new MemberRepositoryV5(dataSource);
         }
 
         @Bean
-        public MemberServiceV3_3 memberService() {
-            return new MemberServiceV3_3(memberRepository());
+        public MemberServiceV4 memberService() {
+            return new MemberServiceV4(memberRepository());
         }
 
     }

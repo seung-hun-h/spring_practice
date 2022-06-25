@@ -1,23 +1,28 @@
 package hello.jdbc.repository;
 
 import hello.jdbc.domain.Member;
+import hello.jdbc.repository.exception.MyDbException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.jdbc.support.JdbcUtils;
+import org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator;
+import org.springframework.jdbc.support.SQLExceptionTranslator;
 
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.NoSuchElementException;
 
 @Slf4j
-public class MemberRepositoryV3 {
+public class MemberRepositoryV4_2 implements MemberRepository {
     private final DataSource dataSource;
+    private final SQLExceptionTranslator exceptionTranslator;
 
-    public MemberRepositoryV3(DataSource dataSource) {
+    public MemberRepositoryV4_2(DataSource dataSource) {
         this.dataSource = dataSource;
+        exceptionTranslator = new SQLErrorCodeSQLExceptionTranslator(dataSource);
     }
 
-    public Member save(Member member) throws SQLException {
+    public Member save(Member member) {
         String sql = "insert into member(member_id, money) values(?, ?)";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -30,13 +35,13 @@ public class MemberRepositoryV3 {
             return member;
         } catch (SQLException e) {
             log.info("db error", e);
-            throw e;
+            throw exceptionTranslator.translate("insert", sql, e);
         } finally {
             close(connection, preparedStatement, null);
         }
     }
 
-    public Member findById(String memberId) throws SQLException {
+    public Member findById(String memberId) {
         String sql = "select * from member where member_id = ?";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -57,13 +62,13 @@ public class MemberRepositoryV3 {
             throw new NoSuchElementException("member not found. memberId = " + memberId);
         } catch (SQLException e) {
             log.error("db error", e);
-            throw e;
+            throw exceptionTranslator.translate("select", sql, e);
         } finally {
             close(connection, preparedStatement, resultSet);
         }
     }
 
-    public void update(String memberId, int money) throws SQLException {
+    public void update(String memberId, int money) {
         String sql = "update member set money = ? where member_id = ?";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -76,7 +81,7 @@ public class MemberRepositoryV3 {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             log.error("db error", e);
-            throw e;
+            throw exceptionTranslator.translate("update", sql, e);
         } finally {
             close(connection, preparedStatement, null);
         }
@@ -88,7 +93,7 @@ public class MemberRepositoryV3 {
         DataSourceUtils.releaseConnection(connection, dataSource);
     }
 
-    public void deleteById(String memberId) throws SQLException {
+    public void deleteById(String memberId) {
         String sql = "delete from member where member_id = ?";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -100,7 +105,7 @@ public class MemberRepositoryV3 {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             log.error("db error", e);
-            throw e;
+            throw exceptionTranslator.translate("dekete", sql, e);
         } finally {
             close(connection, preparedStatement, null);
         }

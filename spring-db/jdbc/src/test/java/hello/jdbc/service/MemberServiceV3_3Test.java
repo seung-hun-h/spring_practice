@@ -6,15 +6,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
@@ -39,9 +36,9 @@ class MemberServiceV3_3Test {
 
     @AfterEach
     void tearDown() throws SQLException {
-        memberRepository.deleteMember(MEMBER_A);
-        memberRepository.deleteMember(MEMBER_B);
-        memberRepository.deleteMember(MEMBER_EX);
+        memberRepository.deleteById(MEMBER_A);
+        memberRepository.deleteById(MEMBER_B);
+        memberRepository.deleteById(MEMBER_EX);
     }
 
     @Test
@@ -58,8 +55,8 @@ class MemberServiceV3_3Test {
         memberService.accountTransfer(memberA.getMemberId(), memberB.getMemberId(), amount);
 
         // then
-        Member findMemberA = memberRepository.findMember(memberA.getMemberId());
-        Member findMemberB = memberRepository.findMember(memberB.getMemberId());
+        Member findMemberA = memberRepository.findById(memberA.getMemberId());
+        Member findMemberB = memberRepository.findById(memberB.getMemberId());
         assertThat(findMemberA.getMoney()).isEqualTo(memberA.getMoney() - amount);
         assertThat(findMemberB.getMoney()).isEqualTo(memberB.getMoney() + amount);
     }
@@ -79,8 +76,8 @@ class MemberServiceV3_3Test {
                 .isInstanceOf(IllegalStateException.class);
 
         // then
-        Member findMemberA = memberRepository.findMember(memberA.getMemberId());
-        Member findMemberB = memberRepository.findMember(memberB.getMemberId());
+        Member findMemberA = memberRepository.findById(memberA.getMemberId());
+        Member findMemberB = memberRepository.findById(memberB.getMemberId());
         assertThat(findMemberA.getMoney()).isEqualTo(memberA.getMoney());
         assertThat(findMemberB.getMoney()).isEqualTo(memberB.getMoney());
     }

@@ -33,12 +33,12 @@ public class MemberServiceV3_1 {
     }
 
     private void bizLogic(String fromId, String toId, int money) throws SQLException {
-        Member fromMember = memberRepository.findMember(fromId);
-        Member toMember = memberRepository.findMember(toId);
+        Member fromMember = memberRepository.findById(fromId);
+        Member toMember = memberRepository.findById(toId);
 
-        memberRepository.updateMember(fromMember.getMemberId(), fromMember.getMoney() - money);
+        memberRepository.update(fromMember.getMemberId(), fromMember.getMoney() - money);
         validate(toMember);
-        memberRepository.updateMember(toMember.getMemberId(), toMember.getMoney() + money);
+        memberRepository.update(toMember.getMemberId(), toMember.getMoney() + money);
     }
 
     private void validate(Member toMember) {

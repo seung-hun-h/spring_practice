@@ -35,9 +35,9 @@ class MemberServiceV3_1Test {
 
     @AfterEach
     void tearDown() throws SQLException {
-        memberRepository.deleteMember(MEMBER_A);
-        memberRepository.deleteMember(MEMBER_B);
-        memberRepository.deleteMember(MEMBER_EX);
+        memberRepository.deleteById(MEMBER_A);
+        memberRepository.deleteById(MEMBER_B);
+        memberRepository.deleteById(MEMBER_EX);
     }
 
     @Test
@@ -54,8 +54,8 @@ class MemberServiceV3_1Test {
         memberService.accountTransfer(memberA.getMemberId(), memberB.getMemberId(), amount);
 
         // then
-        Member findMemberA = memberRepository.findMember(memberA.getMemberId());
-        Member findMemberB = memberRepository.findMember(memberB.getMemberId());
+        Member findMemberA = memberRepository.findById(memberA.getMemberId());
+        Member findMemberB = memberRepository.findById(memberB.getMemberId());
         assertThat(findMemberA.getMoney()).isEqualTo(memberA.getMoney() - amount);
         assertThat(findMemberB.getMoney()).isEqualTo(memberB.getMoney() + amount);
     }
@@ -75,8 +75,8 @@ class MemberServiceV3_1Test {
                 .isInstanceOf(IllegalStateException.class);
 
         // then
-        Member findMemberA = memberRepository.findMember(memberA.getMemberId());
-        Member findMemberB = memberRepository.findMember(memberB.getMemberId());
+        Member findMemberA = memberRepository.findById(memberA.getMemberId());
+        Member findMemberB = memberRepository.findById(memberB.getMemberId());
         assertThat(findMemberA.getMoney()).isEqualTo(memberA.getMoney());
         assertThat(findMemberB.getMoney()).isEqualTo(memberB.getMoney());
     }
