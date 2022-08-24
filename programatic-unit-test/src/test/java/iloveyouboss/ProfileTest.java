@@ -5,6 +5,15 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import iloveyouboss.domain.Answer;
+import iloveyouboss.domain.Bool;
+import iloveyouboss.domain.BooleanQuestion;
+import iloveyouboss.domain.Criteria;
+import iloveyouboss.domain.Criterion;
+import iloveyouboss.domain.Profile;
+import iloveyouboss.domain.Question;
+import iloveyouboss.domain.Weight;
+
 class ProfileTest {
 	private Profile profile;
 	private Question question;
@@ -13,7 +22,7 @@ class ProfileTest {
 	@BeforeEach
 	void setUp() {
 		profile = new Profile("Bull Hockey, Inc.");
-		question = new BooleanQuestion(1, "Got bonuses?");
+		question = new BooleanQuestion("Got bonuses?");
 		criteria = new Criteria();
 	}
 

@@ -2,8 +2,9 @@ package iloveyouboss;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import iloveyouboss.domain.ScoreCollection;
 
 class ScoreCollectionTest {
 
