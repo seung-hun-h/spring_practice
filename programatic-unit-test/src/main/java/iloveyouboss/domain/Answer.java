@@ -18,6 +18,10 @@ public class Answer {
 		return question.getText();
 	}
 
+	public Question getQuestion() {
+		return question;
+	}
+
 	@Override
 	public String toString() {
 		return String.format("%s %s", question.getText(), question.getAnswerChoice(i));

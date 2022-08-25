@@ -38,6 +38,11 @@ public abstract class Question implements Serializable, Persistable {
 		this.text = text;
 	}
 
+	public Question(Integer id, String text) {
+		this.id = id;
+		this.text = text;
+	}
+
 	abstract public List<String> getAnswerChoices();
 	abstract public boolean match(int expected, int actual);
 

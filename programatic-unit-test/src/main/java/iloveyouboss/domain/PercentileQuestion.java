@@ -25,6 +25,11 @@ public class PercentileQuestion extends Question {
 		this.answerChoices = Arrays.asList(answerChoices);
 	}
 
+	public PercentileQuestion(Integer id, String text, String[] answerChoices) {
+		super(id, text);
+		this.answerChoices = Arrays.asList(answerChoices);
+	}
+
 	public List<String> getAnswerChoices() {
 		return answerChoices;
 	}
