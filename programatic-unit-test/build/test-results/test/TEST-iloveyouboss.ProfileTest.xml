@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="iloveyouboss.ProfileTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-08-28T08:53:31" hostname="AL02025359.local" time="0.013">
+  <properties/>
+  <testcase name="findAnswersBasedOnPredicate()" classname="iloveyouboss.ProfileTest" time="0.009"/>
+  <testcase name="matchAnswersTrueForAnyDontCareCriteria()" classname="iloveyouboss.ProfileTest" time="0.001"/>
+  <testcase name="findAnswersUnionComplementBasedOnPredicate()" classname="iloveyouboss.ProfileTest" time="0.001"/>
+  <testcase name="matchAnswersFalseWhenMustMatchCriteriaNotMet()" classname="iloveyouboss.ProfileTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
