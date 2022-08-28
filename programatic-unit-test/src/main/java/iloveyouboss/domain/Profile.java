@@ -7,8 +7,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Profile {
-	private Map<String, Answer> answers = new HashMap<>();
-	private int score;
+	private AnswerCollection answers = new AnswerCollection();
 	private String name;
 
 	public Profile(String name) {
@@ -16,7 +15,7 @@ public class Profile {
 	}
 
 	public void add(Answer answer) {
-		answers.put(answer.getQuestionText(), answer);
+		answers.add(answer);
 	}
 
 	public String getName() {
@@ -25,15 +24,5 @@ public class Profile {
 
 	public MatchSet getMatchSet(Criteria criteria) {
 		return new MatchSet(answers, criteria);
-	}
-
-	public List<Answer> find(Predicate<Answer> pred) {
-		return answers.values().stream()
-			.filter(pred)
-			.collect(Collectors.toList());
-	}
-
-	public int score() {
-		return score;
 	}
 }

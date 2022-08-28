@@ -23,11 +23,11 @@ class MatchSetTest {
 	private Answer answerNoOnsiteDaycare;
 	private Answer answerHasOnsiteDaycare;
 
-	private Map<String, Answer> answers;
+	private AnswerCollection answers;
 
 	@BeforeEach
 	public void createAnswers() {
-		answers = new HashMap<>();
+		answers = new AnswerCollection();
 	}
 
 	@BeforeEach
@@ -60,7 +60,7 @@ class MatchSetTest {
 	}
 
 	private void add(Answer answer) {
-		answers.put(answer.getQuestionText(), answer);
+		answers.add(answer);
 	}
 
 	private MatchSet createMatchSet() {
@@ -90,5 +90,5 @@ class MatchSetTest {
 	    // then
 		assertTrue(createMatchSet().matches());
 	}
-	
+
 }

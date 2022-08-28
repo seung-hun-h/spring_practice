@@ -20,13 +20,13 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">1</div>
+<div class="counter">23</div>
 <p>tests</p>
 </div>
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">6</div>
 <p>failures</p>
 </div>
 </td>
@@ -38,7 +38,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.009s</div>
+<div class="counter">1.690s</div>
 <p>duration</p>
 </div>
 </td>
@@ -47,8 +47,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">73%</div>
 <p>successful</p>
 </div>
 </td>
@@ -58,13 +58,45 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Packages</a>
+<a href="#tab0">Failed tests</a>
 </li>
 <li>
-<a href="#tab1">Classes</a>
+<a href="#tab1">Packages</a>
+</li>
+<li>
+<a href="#tab2">Classes</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<ul class="linkList">
+<li>
+<a href="classes/iloveyouboss.controller.QuestionControllerTest.html">QuestionControllerTest</a>.
+<a href="classes/iloveyouboss.controller.QuestionControllerTest.html#answersMultiplePersistedQuestions()">answersMultiplePersistedQuestions()</a>
+</li>
+<li>
+<a href="classes/iloveyouboss.controller.QuestionControllerTest.html">QuestionControllerTest</a>.
+<a href="classes/iloveyouboss.controller.QuestionControllerTest.html#findsMatchingEntries()">findsMatchingEntries()</a>
+</li>
+<li>
+<a href="classes/iloveyouboss.controller.QuestionControllerTest.html">QuestionControllerTest</a>.
+<a href="classes/iloveyouboss.controller.QuestionControllerTest.html#findsPersistedQuestionById()">findsPersistedQuestionById()</a>
+</li>
+<li>
+<a href="classes/iloveyouboss.controller.QuestionControllerTest.html">QuestionControllerTest</a>.
+<a href="classes/iloveyouboss.controller.QuestionControllerTest.html#questionAnswersDateAdded()">questionAnswersDateAdded()</a>
+</li>
+<li>
+<a href="classes/iloveyouboss.domain.StatCompilerTest.html">StatCompilerTest</a>.
+<a href="classes/iloveyouboss.domain.StatCompilerTest.html#responsesByQuestionAnswersCountsByQuestionText()">responsesByQuestionAnswersCountsByQuestionText()</a>
+</li>
+<li>
+<a href="classes/iloveyouboss.scratch.RectangleTest.html">RectangleTest</a>.
+<a href="classes/iloveyouboss.scratch.RectangleTest.html#allowsDynamicallyChangingSize()">allowsDynamicallyChangingSize()</a>
+</li>
+</ul>
+</div>
+<div id="tab1" class="tab">
 <h2>Packages</h2>
 <table>
 <thead>
@@ -80,18 +112,68 @@
 <tbody>
 <tr>
 <td class="success">
+<a href="packages/iloveyouboss.html">iloveyouboss</a>
+</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0.011s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="failures">
+<a href="packages/iloveyouboss.controller.html">iloveyouboss.controller</a>
+</td>
+<td>4</td>
+<td>4</td>
+<td>0</td>
+<td>1.665s</td>
+<td class="failures">0%</td>
+</tr>
+<tr>
+<td class="failures">
 <a href="packages/iloveyouboss.domain.html">iloveyouboss.domain</a>
+</td>
+<td>4</td>
+<td>1</td>
+<td>0</td>
+<td>0.004s</td>
+<td class="failures">75%</td>
+</tr>
+<tr>
+<td class="failures">
+<a href="packages/iloveyouboss.scratch.html">iloveyouboss.scratch</a>
+</td>
+<td>7</td>
+<td>1</td>
+<td>0</td>
+<td>0.007s</td>
+<td class="failures">85%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="packages/iloveyouboss.transmission.html">iloveyouboss.transmission</a>
+</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0.001s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="packages/iloveyouboss.util.html">iloveyouboss.util</a>
 </td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td>0.009s</td>
+<td>0.002s</td>
 <td class="success">100%</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="tab1" class="tab">
+<div id="tab2" class="tab">
 <h2>Classes</h2>
 <table>
 <thead>
@@ -107,12 +189,92 @@
 <tbody>
 <tr>
 <td class="success">
-<a href="classes/iloveyouboss.domain.MatchSetTest.html">iloveyouboss.domain.MatchSetTest</a>
+<a href="classes/iloveyouboss.ScoreCollectionTest.html">iloveyouboss.ScoreCollectionTest</a>
+</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0.011s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="failures">
+<a href="classes/iloveyouboss.controller.QuestionControllerTest.html">iloveyouboss.controller.QuestionControllerTest</a>
+</td>
+<td>4</td>
+<td>4</td>
+<td>0</td>
+<td>1.665s</td>
+<td class="failures">0%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/iloveyouboss.domain.AnswerCollectionTest.html">iloveyouboss.domain.AnswerCollectionTest</a>
 </td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td>0.009s</td>
+<td>0.001s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/iloveyouboss.domain.MatchSetTest.html">iloveyouboss.domain.MatchSetTest</a>
+</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0.002s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="failures">
+<a href="classes/iloveyouboss.domain.StatCompilerTest.html">iloveyouboss.domain.StatCompilerTest</a>
+</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0.001s</td>
+<td class="failures">0%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/iloveyouboss.scratch.BearingTest.html">iloveyouboss.scratch.BearingTest</a>
+</td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+<td>0.002s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="failures">
+<a href="classes/iloveyouboss.scratch.RectangleTest.html">iloveyouboss.scratch.RectangleTest</a>
+</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>0.005s</td>
+<td class="failures">50%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/iloveyouboss.transmission.TransmissionTest.html">iloveyouboss.transmission.TransmissionTest</a>
+</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0.001s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/iloveyouboss.util.SparseArrayTest.html">iloveyouboss.util.SparseArrayTest</a>
+</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.002s</td>
 <td class="success">100%</td>
 </tr>
 </tbody>
@@ -126,7 +288,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.4</a> at Aug 28, 2022, 6:28:02 PM</p>
+<a href="http://www.gradle.org">Gradle 7.4</a> at Aug 28, 2022, 6:40:12 PM</p>
 </div>
 </div>
 </body>

@@ -3,30 +3,22 @@ package iloveyouboss.domain;
 import java.util.Map;
 
 public class MatchSet {
-	private Map<String, Answer> answers;
+	private AnswerCollection answers = new AnswerCollection();
 	private Criteria criteria;
-	private int score;
 
-	public MatchSet(Map<String, Answer> answers, Criteria criteria) {
+	public MatchSet(AnswerCollection answers, Criteria criteria) {
 		this.answers = answers;
 		this.criteria = criteria;
-		calculateScore(criteria);
 	}
 
-	private void calculateScore(Criteria criteria) {
-		score = 0;
+	private int getScore(Criteria criteria) {
+		int score = 0;
 		for (Criterion criterion : criteria) {
-			if (criterion.matches(answerMatching(criterion))) {
+			if (criterion.matches(answers.answerMatching(criterion))) {
 				score += criterion.getWeight().getValue();
 			}
 		}
-	}
 
-	private Answer answerMatching(Criterion criterion) {
-		return answers.get(criterion.getAnswer().getQuestionText());
-	}
-
-	public int getScore() {
 		return score;
 	}
 
@@ -41,7 +33,7 @@ public class MatchSet {
 	private boolean anyMatches(Criteria criteria) {
 		boolean anyMatches = false;
 		for (Criterion criterion : criteria) {
-			boolean match = criterion.matches(answerMatching(criterion));
+			boolean match = criterion.matches(answers.answerMatching(criterion));
 			anyMatches |= match;
 		}
 
@@ -50,7 +42,7 @@ public class MatchSet {
 
 	private boolean doesNotMeetAnyMustMatchCriterion(Criteria criteria) {
 		for (Criterion criterion : criteria) {
-			boolean match = criterion.matches(answerMatching(criterion));
+			boolean match = criterion.matches(answers.answerMatching(criterion));
 			if (!match && criterion.getWeight() == Weight.MustMatch) {
 				return true;
 			}
