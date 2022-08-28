@@ -31,34 +31,6 @@ class ProfileTest {
 		criteria = new Criteria();
 	}
 
-	@Test
-	void matchAnswersFalseWhenMustMatchCriteriaNotMet() {
-	    // given
-		profile.add(new Answer(question, Bool.FALSE));
-		Criterion criterion = new Criterion(new Answer(question, Bool.TRUE), Weight.MustMatch);
-		criteria.add(criterion);
-
-		// when
-		boolean result = profile.matches(criteria);
-
-		// then
-		assertFalse(result);
-	}
-
-	@Test
-	void matchAnswersTrueForAnyDontCareCriteria() {
-	    // given
-		profile.add(new Answer(question, Bool.FALSE));
-		Criterion criterion = new Criterion(new Answer(question, Bool.TRUE), Weight.DontCare);
-		criteria.add(criterion);
-
-		// when
-		boolean result = profile.matches(criteria);
-
-		// then
-		assertTrue(result);
-	}
-
 	int[] ids(Collection<Answer> answers) {
 		return answers.stream()
 			.mapToInt(answer -> answer.getQuestion().getId())
