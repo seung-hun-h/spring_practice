@@ -23,10 +23,8 @@ public class Profile {
 		return name;
 	}
 
-	public boolean matches(Criteria criteria) {
-		MatchSet matchSet = new MatchSet(answers, criteria);
-		score = matchSet.getScore();
-		return matchSet.matches();
+	public MatchSet getMatchSet(Criteria criteria) {
+		return new MatchSet(answers, criteria);
 	}
 
 	public List<Answer> find(Predicate<Answer> pred) {
