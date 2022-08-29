@@ -1,4 +1,4 @@
-package iloveyouboss.scratch;
+package scratch;
 
 public class Bearing {
 	public static final int MAX = 359;

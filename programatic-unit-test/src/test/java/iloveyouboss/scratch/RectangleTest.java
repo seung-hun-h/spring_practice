@@ -9,8 +9,10 @@ import java.awt.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
+import scratch.Rectangle;
+
 class RectangleTest {
-	private Rectangle rectangle;
+	private scratch.Rectangle rectangle;
 
 	@AfterEach
 	public void ensureInvariant() {
@@ -19,7 +21,7 @@ class RectangleTest {
 
 	@Test
 	void answersArea() {
-		rectangle = new Rectangle(new Point(5, 5), new Point(15, 10));
+		rectangle = new scratch.Rectangle(new Point(5, 5), new Point(15, 10));
 		assertEquals(rectangle.area(), 50);
 	}
 

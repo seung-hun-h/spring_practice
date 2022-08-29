@@ -2,9 +2,10 @@ package iloveyouboss.util;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import util.SparseArray;
 
 class SparseArrayTest {
 	private SparseArray<Object> array;

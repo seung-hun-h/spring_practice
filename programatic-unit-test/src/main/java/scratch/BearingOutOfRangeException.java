@@ -1,4 +1,4 @@
-package iloveyouboss.scratch;
+package scratch;
 
 public class BearingOutOfRangeException extends RuntimeException {
 }

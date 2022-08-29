@@ -3,7 +3,7 @@ package iloveyouboss.domain;
 import java.util.Map;
 
 public class MatchSet {
-	private AnswerCollection answers = new AnswerCollection();
+	private AnswerCollection answers;
 	private Criteria criteria;
 
 	public MatchSet(AnswerCollection answers, Criteria criteria) {

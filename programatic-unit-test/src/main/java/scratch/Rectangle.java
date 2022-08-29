@@ -1,4 +1,4 @@
-package iloveyouboss.scratch;
+package scratch;
 
 import java.awt.*;
 

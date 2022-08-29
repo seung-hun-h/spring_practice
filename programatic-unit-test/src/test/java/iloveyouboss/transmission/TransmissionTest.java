@@ -5,6 +5,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import transmission.Car;
+import transmission.Gear;
+import transmission.Transmission;
+
 class TransmissionTest {
 	private Transmission transmission;
 	private Car car;

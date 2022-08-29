@@ -1,4 +1,4 @@
-package iloveyouboss.transmission;
+package transmission;
 
 public class Car implements Moveable {
 

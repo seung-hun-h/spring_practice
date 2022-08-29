@@ -2,8 +2,10 @@ package iloveyouboss.scratch;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import scratch.Bearing;
+import scratch.BearingOutOfRangeException;
 
 class BearingTest {
 	@Test
