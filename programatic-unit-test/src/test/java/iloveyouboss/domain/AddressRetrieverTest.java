@@ -1,6 +1,8 @@
 package iloveyouboss.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.BDDMockito.*;
+import static org.mockito.Mockito.*;
 
 import java.io.IOException;
 
@@ -14,15 +16,17 @@ class AddressRetrieverTest {
 	@Test
 	void answersAppropriateAddressForValidCoordinates() throws IOException, ParseException {
 	    // given
-		Http http = (String url) ->
-			"{\"address\":{"
+		Http http = mock(Http.class);
+		given(http.get(contains("lat=38.000000&lon=-104.000000")))
+			.willReturn("{\"address\":{"
 				+ "\"house_number\":\"324\","
 				+ "\"road\":\"North Tejon Street\","
 				+ "\"city\":\"Colorado Springs\","
 				+ "\"state\":\"Colorado\","
 				+ "\"postcode\":\"80903\","
 				+ "\"country_code\":\"us\"}"
-				+ "}";
+				+ "}");
+
 		AddressRetriever addressRetriever = new AddressRetriever(http);
 
 		// when

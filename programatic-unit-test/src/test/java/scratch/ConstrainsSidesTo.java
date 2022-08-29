@@ -1,10 +1,8 @@
-package iloveyouboss.scratch;
+package scratch;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
-
-import scratch.Rectangle;
 
 public class ConstrainsSidesTo extends TypeSafeMatcher<Rectangle> {
 	private int length;

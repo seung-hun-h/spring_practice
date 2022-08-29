@@ -1,4 +1,4 @@
-package iloveyouboss.scratch;
+package scratch;
 
 import static org.junit.jupiter.api.Assertions.*;
 

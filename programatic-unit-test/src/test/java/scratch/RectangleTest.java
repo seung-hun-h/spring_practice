@@ -1,6 +1,6 @@
-package iloveyouboss.scratch;
+package scratch;
 
-import static iloveyouboss.scratch.ConstrainsSidesTo.*;
+import static scratch.ConstrainsSidesTo.*;
 import static org.hamcrest.MatcherAssert.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,8 +8,6 @@ import java.awt.*;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-
-import scratch.Rectangle;
 
 class RectangleTest {
 	private scratch.Rectangle rectangle;

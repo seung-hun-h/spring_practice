@@ -1,4 +1,4 @@
-package iloveyouboss.transmission;
+package transmission;
 
 import static org.junit.jupiter.api.Assertions.*;
 

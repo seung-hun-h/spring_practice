@@ -17,9 +17,8 @@ public class AddressRetriever {
 		this.http = http;
 	}
 
-	public Address retrieve(double latitude, double longitude)
-		throws IOException, ParseException {
-		String params = String.format("lat=%.6flon=%.6f", latitude, longitude);
+	public Address retrieve(double latitude, double longitude) throws IOException, ParseException {
+		String params = String.format("lat=%.6f&lon=%.6f", latitude, longitude);
 		String response = http.get("http://open.mapquestapi.com/nominatim/v1/reverse?format=json&" + params);
 
 		JSONObject obj = (JSONObject) new JSONParser().parse(response);
