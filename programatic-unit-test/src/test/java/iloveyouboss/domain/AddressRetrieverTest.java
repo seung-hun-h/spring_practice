@@ -2,21 +2,29 @@ package iloveyouboss.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.*;
-import static org.mockito.Mockito.*;
 
 import java.io.IOException;
 
 import org.json.simple.parser.ParseException;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import util.Http;
 
+@ExtendWith(MockitoExtension.class)
 class AddressRetrieverTest {
+	@Mock
+	private Http http;
+
+	@InjectMocks
+	private AddressRetriever addressRetriever;
+
 	@Test
 	void answersAppropriateAddressForValidCoordinates() throws IOException, ParseException {
 	    // given
-		Http http = mock(Http.class);
 		given(http.get(contains("lat=38.000000&lon=-104.000000")))
 			.willReturn("{\"address\":{"
 				+ "\"house_number\":\"324\","
@@ -27,7 +35,6 @@ class AddressRetrieverTest {
 				+ "\"country_code\":\"us\"}"
 				+ "}");
 
-		AddressRetriever addressRetriever = new AddressRetriever(http);
 
 		// when
 		Address address = addressRetriever.retrieve(38.0, -104.0);
