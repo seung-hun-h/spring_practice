@@ -6,13 +6,21 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import util.Http;
 import util.HttpImpl;
 
 public class AddressRetriever {
+	private final Http http;
+
+
+	public AddressRetriever(Http http) {
+		this.http = http;
+	}
+
 	public Address retrieve(double latitude, double longitude)
 		throws IOException, ParseException {
 		String params = String.format("lat=%.6flon=%.6f", latitude, longitude);
-		String response = new HttpImpl().get("http://open.mapquestapi.com/nominatim/v1/reverse?format=json&" + params);
+		String response = http.get("http://open.mapquestapi.com/nominatim/v1/reverse?format=json&" + params);
 
 		JSONObject obj = (JSONObject) new JSONParser().parse(response);
 

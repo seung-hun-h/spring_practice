@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="iloveyouboss.domain.AddressRetrieverTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-08-29T22:48:56" hostname="AL02025359.local" time="0.01">
+  <properties/>
+  <testcase name="answersAppropriateAddressForValidCoordinates()" classname="iloveyouboss.domain.AddressRetrieverTest" time="0.01"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
