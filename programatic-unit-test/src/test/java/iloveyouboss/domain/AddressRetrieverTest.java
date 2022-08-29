@@ -35,7 +35,6 @@ class AddressRetrieverTest {
 				+ "\"country_code\":\"us\"}"
 				+ "}");
 
-
 		// when
 		Address address = addressRetriever.retrieve(38.0, -104.0);
 
