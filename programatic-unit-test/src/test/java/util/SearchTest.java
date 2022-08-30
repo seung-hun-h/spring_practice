@@ -40,7 +40,7 @@ public class SearchTest {
 		InputStream inputStream = connection.getInputStream();
 		search = new Search(inputStream, "smelt", "http://bit.ly/15sYPA7");
 		search.execute();
-		assertEquals(search.getMatches().size(), 0);
+		assertTrue(search.getMatches().isEmpty());
 		stream.close();
 	}
 }
