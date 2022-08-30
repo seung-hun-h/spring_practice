@@ -58,6 +58,41 @@ public class SearchTest {
 		assertTrue(search.getMatches().isEmpty());
 	}
 
+	@Test
+	void returnsErroredWhenUnableToReadStream() {
+	    // given
+	    stream = createStreamThrowingErrorWhenRead();
+		Search search = new Search(stream, " ", " ");
+
+		// when
+		search.execute();
+
+	    // then
+		assertTrue(search.errored());
+	}
+
+	@Test
+	void erroredReturnsFalseWhenReadSucceeds() {
+	    // given
+		stream = streamOn(" ");
+		Search search = new Search(stream, " ", " ");
+
+		// when
+		search.execute();
+
+	    // then
+		assertFalse(search.errored());
+	}
+
+	private InputStream createStreamThrowingErrorWhenRead() {
+		return new InputStream() {
+			@Override
+			public int read() throws IOException {
+				throw new IOException();
+			}
+		};
+	}
+
 	private ByteArrayInputStream streamOn(String pageContent) {
 		return new ByteArrayInputStream(pageContent.getBytes());
 	}
