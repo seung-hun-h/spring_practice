@@ -1,9 +1,12 @@
 package util;
 
+import static org.hamcrest.MatcherAssert.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
@@ -16,7 +19,7 @@ public class SearchTest {
 	public static final String A_TITLE = "1";
 
 	@Test
-	public void testSearch() throws Exception {
+	public void returnsMatchesShowingContextWhenSearchStringInContent() throws Exception {
 		ByteArrayInputStream stream = streamOn("There are certain queer times and occasions "
 			+ "in this strange mixed affair we call life when a man "
 			+ "takes this whole universe for a vast practical joke, "
@@ -30,22 +33,28 @@ public class SearchTest {
 		search.setSurroundingCharacterCount(10);
 		search.execute();
 		assertFalse(search.errored());
-		List<Match> matches = search.getMatches();
-		assertTrue(matches.size() >= 1);
-		Match match = matches.get(0);
-		assertEquals(match.searchString, "practical joke");
-		assertEquals(match.surroundingContext, "or a vast practical joke, though t");
+		assertThat(search.getMatches(),
+			ContainsMatches.containsMatches(
+				new Match[] {
+					new Match(A_TITLE, "practical joke", "or a vast practical joke, through t")
+				}
+			));
 		stream.close();
 
+	}
+
+	@Test
+	void noMatchesReturnedWhenSearchStringNotInContent() throws IOException {
 		// negative
 		URLConnection connection = new URL("http://bit.ly/15sYPA7").openConnection();
 		InputStream inputStream = connection.getInputStream();
-		search = new Search(inputStream, "smelt", A_TITLE);
+		Search search = new Search(inputStream, "smelt", A_TITLE);
 		search.execute();
 		assertTrue(search.getMatches().isEmpty());
-		stream.close();
+		inputStream.close();
 	}
 
+	
 	private ByteArrayInputStream streamOn(String pageContent) {
 		return new ByteArrayInputStream(pageContent.getBytes());
 	}
