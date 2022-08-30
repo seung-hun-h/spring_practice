@@ -1,28 +1,13 @@
 package iloveyouboss.domain;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-
 public class Profile {
-	private AnswerCollection answers = new AnswerCollection();
-	private String name;
+	private Answer answer;
 
-	public Profile(String name) {
-		this.name = name;
+	public boolean matches(Criterion criterion) {
+		return answer != null;
 	}
 
 	public void add(Answer answer) {
-		answers.add(answer);
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public MatchSet getMatchSet(Criteria criteria) {
-		return new MatchSet(answers, criteria);
+		this.answer = answer;
 	}
 }
