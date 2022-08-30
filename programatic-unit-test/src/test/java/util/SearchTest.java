@@ -12,6 +12,9 @@ import java.util.logging.Level;
 import org.junit.jupiter.api.Test;
 
 public class SearchTest {
+
+	public static final String A_TITLE = "1";
+
 	@Test
 	public void testSearch() throws Exception {
 		String pageContent = "There are certain queer times and occasions "
@@ -23,7 +26,7 @@ public class SearchTest {
 		byte[] bytes = pageContent.getBytes();
 		ByteArrayInputStream stream = new ByteArrayInputStream(bytes);
 		// search
-		Search search = new Search(stream, "practical joke", "1");
+		Search search = new Search(stream, "practical joke", A_TITLE);
 		Search.LOGGER.setLevel(Level.OFF);
 		search.setSurroundingCharacterCount(10);
 		search.execute();
@@ -38,7 +41,7 @@ public class SearchTest {
 		// negative
 		URLConnection connection = new URL("http://bit.ly/15sYPA7").openConnection();
 		InputStream inputStream = connection.getInputStream();
-		search = new Search(inputStream, "smelt", "http://bit.ly/15sYPA7");
+		search = new Search(inputStream, "smelt", A_TITLE);
 		search.execute();
 		assertTrue(search.getMatches().isEmpty());
 		stream.close();
