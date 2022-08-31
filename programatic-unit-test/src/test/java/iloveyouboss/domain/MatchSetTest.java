@@ -64,7 +64,7 @@ class MatchSetTest {
 	}
 
 	private MatchSet createMatchSet() {
-		return new MatchSet(answers, criteria);
+		return new MatchSet("1", answers.getAnswers(), criteria);
 	}
 
 	@Test

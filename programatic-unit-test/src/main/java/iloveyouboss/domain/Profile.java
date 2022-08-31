@@ -5,6 +5,11 @@ import java.util.Map;
 
 public class Profile {
 	private Map<String, Answer> answers = new HashMap<>();
+	private String id;
+
+	public Profile(String id) {
+		this.id = id;
+	}
 
 	public boolean matches(Criterion criterion) {
 		return criterion.getWeight() == Weight.DontCare
@@ -35,4 +40,13 @@ public class Profile {
 	public ProfileMatch match(Criteria criteria) {
 		return new ProfileMatch();
 	}
+
+	public String getId() {
+		return id;
+	}
+
+	public MatchSet getMatchSet(Criteria criteria) {
+		return new MatchSet(id, answers, criteria);
+	}
+
 }

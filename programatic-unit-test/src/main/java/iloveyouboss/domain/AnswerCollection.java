@@ -22,4 +22,8 @@ public class AnswerCollection {
 			.filter(pred)
 			.collect(Collectors.toList());
 	}
+
+	public Map<String, Answer> getAnswers() {
+		return answers;
+	}
 }

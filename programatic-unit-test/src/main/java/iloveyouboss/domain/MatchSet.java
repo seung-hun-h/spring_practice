@@ -2,52 +2,66 @@ package iloveyouboss.domain;
 
 import java.util.Map;
 
-public class MatchSet {
-	private AnswerCollection answers;
+public class MatchSet implements Comparable<MatchSet> {
+	private Map<String, Answer> answers;
 	private Criteria criteria;
+	private int score = Integer.MIN_VALUE;
+	private String profileId;
 
-	public MatchSet(AnswerCollection answers, Criteria criteria) {
+	public MatchSet(String profileId, Map<String, Answer> answers, Criteria criteria) {
+		this.profileId = profileId;
 		this.answers = answers;
 		this.criteria = criteria;
 	}
 
-	private int getScore(Criteria criteria) {
-		int score = 0;
-		for (Criterion criterion : criteria) {
-			if (criterion.matches(answers.answerMatching(criterion))) {
-				score += criterion.getWeight().getValue();
-			}
-		}
+	public String getProfileId() {
+		return profileId;
+	}
 
+	public int getScore() {
+		if (score == Integer.MIN_VALUE) calculateScore();
 		return score;
 	}
 
-	public boolean matches() {
-		if (doesNotMeetAnyMustMatchCriterion(criteria)) {
-			return false;
-		}
-
-		return anyMatches(criteria);
+	private void calculateScore() {
+		score = 0;
+		for (Criterion criterion: criteria)
+			if (criterion.matches(answerMatching(criterion)))
+				score += criterion.getWeight().getValue();
 	}
 
-	private boolean anyMatches(Criteria criteria) {
-		boolean anyMatches = false;
-		for (Criterion criterion : criteria) {
-			boolean match = criterion.matches(answers.answerMatching(criterion));
-			anyMatches |= match;
-		}
+	private Answer answerMatching(Criterion criterion) {
+		return answers.get(criterion.getAnswer().getQuestionText());
+	}
 
+	public boolean matches() {
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+		}
+		if (doesNotMeetAnyMustMatchCriterion())
+			return false;
+		return anyMatches();
+	}
+
+	private boolean doesNotMeetAnyMustMatchCriterion() {
+		for (Criterion criterion: criteria) {
+			boolean match = criterion.matches(answerMatching(criterion));
+			if (!match && criterion.getWeight() == Weight.MustMatch)
+				return true;
+		}
+		return false;
+	}
+
+	private boolean anyMatches() {
+		boolean anyMatches = false;
+		for (Criterion criterion: criteria)
+			anyMatches |= criterion.matches(answerMatching(criterion));
 		return anyMatches;
 	}
 
-	private boolean doesNotMeetAnyMustMatchCriterion(Criteria criteria) {
-		for (Criterion criterion : criteria) {
-			boolean match = criterion.matches(answers.answerMatching(criterion));
-			if (!match && criterion.getWeight() == Weight.MustMatch) {
-				return true;
-			}
-		}
-
-		return false;
+	@Override
+	public int compareTo(MatchSet that) {
+		return Integer.compare(getScore(), that.getScore());
 	}
 }
