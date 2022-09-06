@@ -1,4 +1,4 @@
-package item2.builder;
+package item02.builder;
 
 import java.util.Objects;
 

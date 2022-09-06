@@ -1,4 +1,4 @@
-package item2.setter;
+package item02.setter;
 
 public class NutritionFacts {
 	private int servingSize;

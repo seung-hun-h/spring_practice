@@ -1,4 +1,4 @@
-package item2.telescopingconstructor;
+package item02.telescopingconstructor;
 
 public class NutritionFacts {
 	private final int servingSize;

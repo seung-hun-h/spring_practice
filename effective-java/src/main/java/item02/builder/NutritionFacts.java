@@ -1,4 +1,4 @@
-package item2.builder;
+package item02.builder;
 
 public class NutritionFacts {
 	private final int servingSize;
