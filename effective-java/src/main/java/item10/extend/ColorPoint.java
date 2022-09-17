@@ -21,4 +21,13 @@ public class ColorPoint extends Point {
 
 		return super.equals(obj) && p.color == this.color;
 	}
+
+	@Override
+	public ColorPoint clone() {
+		try {
+			return (ColorPoint)super.clone();
+		} catch (CloneNotSupportedException e) {
+			throw new AssertionError();
+		}
+	}
 }
