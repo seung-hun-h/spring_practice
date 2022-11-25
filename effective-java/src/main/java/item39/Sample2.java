@@ -20,7 +20,7 @@ public class Sample2 {
 	public static void m3() {
 	}
 
-	@ExceptionTest({IndexOutOfBoundsException.class, NullPointerException.class})
+	// @ExceptionTest({IndexOutOfBoundsException.class, NullPointerException.class})
 	public static void doublyBad() {
 		List<String> list = new ArrayList<>();
 		list.addAll(5, null);
