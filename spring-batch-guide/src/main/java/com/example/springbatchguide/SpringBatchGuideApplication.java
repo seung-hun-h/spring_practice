@@ -14,7 +14,7 @@ import com.example.springbatchguide.job.SimpleNextJobConfiguration;
 
 
 @EnableBatchProcessing // 배치 기능 활성화
-@SpringBootApplication(scanBasePackages = "com.example.springbatchguide.reader")
+@SpringBootApplication(scanBasePackages = "com.example.springbatchguide.writer")
 public class SpringBatchGuideApplication {
 
 	public static void main(String[] args) {
