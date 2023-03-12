@@ -1,0 +1,23 @@
+my:
+  datasource:
+    etc:
+      max-connection: 10
+      options: CACHE,ADMIN
+      timeout: 3500ms
+    password: local_pw
+    url: local.db.com
+    username: local_user
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+my:
+  datasource:
+    etc:
+      max-connection: 10
+      options: CACHE,ADMIN
+      timeout: 3500ms
+    password: prod_pw
+    url: prod.db.com
+    username: prod_user
