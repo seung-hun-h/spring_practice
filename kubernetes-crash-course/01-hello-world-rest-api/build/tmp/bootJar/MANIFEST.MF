@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Implementation-Title: hello-world-rest-api
+Implementation-Version: 0.0.4-SNAPSHOT
+
