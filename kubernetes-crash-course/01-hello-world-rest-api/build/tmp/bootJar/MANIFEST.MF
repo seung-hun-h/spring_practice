@@ -1,4 +1,13 @@
 Manifest-Version: 1.0
 Implementation-Title: hello-world-rest-api
 Implementation-Version: 0.0.4-SNAPSHOT
+Main-Class: org.springframework.boot.loader.JarLauncher
+Start-Class: com.in28minutes.rest.webservices.restfulwebservices.Restful
+ WebServicesApplication
+Spring-Boot-Version: 3.0.4
+Spring-Boot-Classes: BOOT-INF/classes/
+Spring-Boot-Lib: BOOT-INF/lib/
+Spring-Boot-Classpath-Index: BOOT-INF/classpath.idx
+Spring-Boot-Layers-Index: BOOT-INF/layers.idx
+Build-Jdk-Spec: 17
 

@@ -1,5 +1,5 @@
 FROM openjdk:17
 VOLUME /tmp
 EXPOSE 8080
-ADD build/libs/*.jar app.jar
+ADD ${JAR_FILE} app.jar
 ENTRYPOINT [ "sh", "-c", "java -jar /app.jar" ]
