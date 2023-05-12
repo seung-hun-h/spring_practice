@@ -52,28 +52,19 @@ tasks.named("jar").configure {
     enabled = false
 }
 
-
-val dockerImageTag = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss")) // 변경해야 하는 부분
-
 val bootJar = tasks.named("bootJar").get()
-docker {
-    name = "dau47/k8s:$dockerImageTag"
-    dependsOn(tasks.named("dockerPrepare").get())
-    files(bootJar.outputs.files.singleFile)
-    buildArgs(mapOf("JAR_FILE" to "${bootJar.outputs.files.singleFile}"))
-    pull(true)
-    push(true)
-    noCache(true)
-}
 
 tasks.getByName("dockerPrepare", Copy::class) {
     dependsOn(bootJar)
     from(bootJar.outputs.files.singleFile)
     into("build/docker")
-    duplicatesStrategy = DuplicatesStrategy.WARN
+    duplicatesStrategy = DuplicatesStrategy.FAIL
 }
 
-tasks.named("dockerPush") {
-    dependsOn("docker")
+docker {
+    name = "dau47/k8s:$version"
+    dependsOn(bootJar)
+    buildArgs(mapOf("JAR_FILE" to bootJar.outputs.files.singleFile.name))
+    push(true)
+    noCache(true)
 }
-
