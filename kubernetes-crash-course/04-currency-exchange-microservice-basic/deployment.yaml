@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -6,7 +6,7 @@ metadata:
   name: currency-exchange
   namespace: default
 spec:
-  replicas: 1 #CHANGE
+  replicas: 2 #CHANGE
   minReadySeconds: 45
   selector:
     matchLabels:
@@ -41,14 +41,14 @@ spec:
             port: liveness-port
           failureThreshold: 5
           periodSeconds: 10
-          initialDelaySeconds: 60
+          initialDelaySeconds: 240
         livenessProbe:
           httpGet:
             path: /
             port: liveness-port
           failureThreshold: 5
           periodSeconds: 10
-          initialDelaySeconds: 60
+          initialDelaySeconds: 240
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
 ---
@@ -61,11 +61,11 @@ metadata:
   namespace: default
 spec:
   ports:
-  - # nodePort: 30702 #CHANGE
+  - nodePort: 30702 #CHANGE
     port: 8000 #CHANGE
     protocol: TCP
     targetPort: 8000 #CHANGE
   selector:
     app: currency-exchange
   sessionAffinity: None #CHANGE
-  type: LoadBalancer
+  type: NodePort

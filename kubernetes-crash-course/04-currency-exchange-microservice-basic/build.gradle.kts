@@ -27,7 +27,7 @@ dependencies {
 }
 
 group = "com.in28minutes.microservices.currencyexchangeservice"
-version = "0.0.1-SNAPSHOT"
+version = "0.0.1-RELEASE"
 description = "currency-exchange"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
