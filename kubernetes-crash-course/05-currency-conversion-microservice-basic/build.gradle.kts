@@ -27,8 +27,8 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test:2.1.7.RELEASE")
 }
 
-group = "com.in28minutes.microservices.concurrencyconversionservice"
-version = "0.0.2-SNAPSHOT"
+group = "currency-conversion"
+version = "0.0.2-RELEASE"
 description = "currency-conversion"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
