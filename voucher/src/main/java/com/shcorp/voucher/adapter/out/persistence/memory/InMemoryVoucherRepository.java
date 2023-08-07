@@ -18,13 +18,13 @@ public class InMemoryVoucherRepository implements GetVoucherUseCase, SaveVoucher
 	@Override
 	public List<GetVoucherResponse> getVouchers() {
 		return vouchers.stream()
-			.map(inMemoryVoucherEntity -> new GetVoucherResponse(inMemoryVoucherEntity.getId().toString(), inMemoryVoucherEntity.getVoucherType(), inMemoryVoucherEntity.getAmount()))
+			.map(inMemoryVoucherEntity -> new GetVoucherResponse(inMemoryVoucherEntity.getVoucherCode(), inMemoryVoucherEntity.getVoucherType(), inMemoryVoucherEntity.getAmount()))
 			.toList();
 	}
 
 	@Override
-	public void saveVoucher(VoucherType voucherType, int amount) {
-		InMemoryVoucherEntity voucherEntity = new InMemoryVoucherEntity(UUID.randomUUID(), voucherType, amount);
+	public void saveVoucher(String voucherCode, VoucherType voucherType, int amount) {
+		InMemoryVoucherEntity voucherEntity = new InMemoryVoucherEntity(UUID.randomUUID(), voucherCode, voucherType, amount);
 		vouchers.add(voucherEntity);
 	}
 }
