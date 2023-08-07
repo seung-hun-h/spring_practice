@@ -1,10 +1,10 @@
 package com.shcorp.voucher.domain;
 
-record Money(int amount) {
+public record Money(int amount) {
 	public static final Money ZERO = new Money(0);
 	private static final int MIN_AMOUNT = 0;
 	private static final int MAX_AMOUNT = 1_000_000;
-	Money {
+	public Money {
 		if (amount < MIN_AMOUNT) {
 			throw new IllegalArgumentException("amounts cannot be less than " + MIN_AMOUNT + "current amount: " + amount);
 		}
