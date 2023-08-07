@@ -7,12 +7,12 @@ import java.util.UUID;
 import org.springframework.stereotype.Repository;
 
 import com.shcorp.voucher.application.port.out.model.GetVoucherResponse;
-import com.shcorp.voucher.application.port.out.GetVoucherService;
+import com.shcorp.voucher.application.port.out.GetVoucherUseCase;
 import com.shcorp.voucher.application.port.out.SaveVoucherPort;
 import com.shcorp.voucher.domain.VoucherType;
 
 @Repository
-public class InMemoryVoucherRepository implements GetVoucherService, SaveVoucherPort {
+public class InMemoryVoucherRepository implements GetVoucherUseCase, SaveVoucherPort {
 	private static final List<InMemoryVoucherEntity> vouchers = new ArrayList<>();
 
 	@Override

@@ -4,6 +4,6 @@ import java.util.List;
 
 import com.shcorp.voucher.application.port.out.model.GetVoucherResponse;
 
-public interface GetVoucherService {
+public interface GetVoucherUseCase {
 	List<GetVoucherResponse> getVouchers();
 }
