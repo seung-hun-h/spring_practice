@@ -23,8 +23,8 @@ public class InMemoryVoucherRepository implements GetVoucherPort, SaveVoucherPor
 	}
 
 	@Override
-	public void saveVoucher(String voucherCode, VoucherType voucherType, int amount) {
-		InMemoryVoucherEntity voucherEntity = new InMemoryVoucherEntity(UUID.randomUUID(), voucherCode, voucherType, amount);
+	public void saveVoucher(Voucher voucher) {
+		InMemoryVoucherEntity voucherEntity = new InMemoryVoucherEntity(UUID.randomUUID(), voucher.getCode(), voucher.getType(), voucher.getAmount());
 		vouchers.add(voucherEntity);
 	}
 }
