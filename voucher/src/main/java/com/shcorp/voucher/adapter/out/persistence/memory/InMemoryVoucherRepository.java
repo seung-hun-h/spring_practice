@@ -6,19 +6,19 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
-import com.shcorp.voucher.application.port.out.model.GetVoucherResponse;
-import com.shcorp.voucher.application.port.out.GetVoucherUseCase;
+import com.shcorp.voucher.application.port.out.GetVoucherPort;
 import com.shcorp.voucher.application.port.out.SaveVoucherPort;
+import com.shcorp.voucher.domain.Voucher;
 import com.shcorp.voucher.domain.VoucherType;
 
 @Repository
-public class InMemoryVoucherRepository implements GetVoucherUseCase, SaveVoucherPort {
+public class InMemoryVoucherRepository implements GetVoucherPort, SaveVoucherPort {
 	private static final List<InMemoryVoucherEntity> vouchers = new ArrayList<>();
 
 	@Override
-	public List<GetVoucherResponse> getVouchers() {
+	public List<Voucher> getVouchers() {
 		return vouchers.stream()
-			.map(inMemoryVoucherEntity -> new GetVoucherResponse(inMemoryVoucherEntity.getVoucherCode(), inMemoryVoucherEntity.getVoucherType(), inMemoryVoucherEntity.getAmount()))
+			.map(inMemoryVoucherEntity -> Voucher.from(inMemoryVoucherEntity.getVoucherCode(), inMemoryVoucherEntity.getVoucherType(), inMemoryVoucherEntity.getAmount()))
 			.toList();
 	}
 
