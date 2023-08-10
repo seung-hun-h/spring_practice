@@ -16,4 +16,12 @@ public class CreatVoucherCommand extends SelfValidating<CreatVoucherCommand> {
 		this.amount = amount;
 		super.validateSelf();
 	}
+
+	public VoucherType getVoucherType() {
+		return voucherType;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
 }
