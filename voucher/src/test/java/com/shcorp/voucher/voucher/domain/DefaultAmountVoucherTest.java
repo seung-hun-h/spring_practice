@@ -1,11 +1,8 @@
-package com.shcorp.voucher.domain;
+package com.shcorp.voucher.voucher.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-
-import com.shcorp.voucher.voucher.domain.DefaultAmountVoucher;
-import com.shcorp.voucher.voucher.domain.Money;
 
 class DefaultAmountVoucherTest {
 	@Test
