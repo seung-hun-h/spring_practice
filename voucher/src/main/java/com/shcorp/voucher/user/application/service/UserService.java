@@ -20,10 +20,10 @@ public class UserService implements SignUpUseCase {
 	@Override
 	public void signUp(SignUpCommand signUpCommand) {
 		User user = new User(
-			signUpCommand.email(),
-			signUpCommand.password(),
-			signUpCommand.nickname(),
-			signUpCommand.requestAt(),
+			signUpCommand.getEmail(),
+			signUpCommand.getPassword(),
+			signUpCommand.getNickname(),
+			signUpCommand.getRequestAt(),
 			AuthenticationStatus.SIGNED_OUT
 		);
 
