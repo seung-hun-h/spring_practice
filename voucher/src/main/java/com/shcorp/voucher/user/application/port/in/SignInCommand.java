@@ -1,0 +1,37 @@
+package com.shcorp.voucher.user.application.port.in;
+
+import java.time.LocalDateTime;
+
+import com.shcorp.voucher.user.domain.SelfValidating;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+public class SignInCommand extends SelfValidating<SignInCommand> {
+
+	@NotBlank
+	private final String email;
+	@NotBlank
+	private final String password;
+	@NotNull
+	private final LocalDateTime requestAt;
+
+	public SignInCommand(String email, String password, LocalDateTime requestAt) {
+		this.email = email;
+		this.password = password;
+		this.requestAt = requestAt;
+		this.validateSelf();
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public LocalDateTime getRequestAt() {
+		return requestAt;
+	}
+}
+

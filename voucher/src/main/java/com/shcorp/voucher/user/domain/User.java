@@ -23,13 +23,9 @@ public class User {
 		this.updatedAt = updatedAt;
 	}
 
-	public void signIn(String password, LocalDateTime signedInAt) {
+	public void signIn(LocalDateTime signedInAt) {
 		if (authenticationStatus == AuthenticationStatus.SIGNED_IN) {
 			throw new IllegalStateException("already signed in");
-		}
-
-		if (!this.password.equals(password)) {
-			throw new IllegalStateException("Bad Credential!");
 		}
 
 		this.authenticationStatus = AuthenticationStatus.SIGNED_IN;

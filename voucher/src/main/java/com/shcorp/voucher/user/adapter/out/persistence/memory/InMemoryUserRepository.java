@@ -10,11 +10,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.stereotype.Repository;
 
+import com.shcorp.voucher.user.application.port.out.GetUserPort;
 import com.shcorp.voucher.user.application.port.out.SaveUserPort;
 import com.shcorp.voucher.user.domain.User;
 
 @Repository
-public class InMemoryUserRepository implements SaveUserPort {
+public class InMemoryUserRepository implements SaveUserPort, GetUserPort {
 	private static final Map<UUID, InMemoryUserEntity> users = new ConcurrentHashMap<>();
 
 	@Override
@@ -45,5 +46,23 @@ public class InMemoryUserRepository implements SaveUserPort {
 		);
 
 		users.put(inMemoryUserEntity.getId(), inMemoryUserEntity);
+	}
+
+	@Override
+	public Optional<User> getUser(String email) {
+		for (Map.Entry<UUID, InMemoryUserEntity> entityEntry : users.entrySet()) {
+			if (entityEntry.getValue().getEmail().equals(email)) {
+				InMemoryUserEntity inMemoryUserEntity = entityEntry.getValue();
+				return Optional.of(new User(
+					inMemoryUserEntity.getEmail(),
+					null,
+					inMemoryUserEntity.getNickname(),
+					inMemoryUserEntity.getUpdatedAt(),
+					inMemoryUserEntity.getAuthenticationStatus()
+				));
+			}
+		}
+
+		return Optional.empty();
 	}
 }
