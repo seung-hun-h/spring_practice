@@ -12,16 +12,18 @@ import com.shcorp.voucher.user.domain.User;
 @Service
 public class UserService implements SignUpUseCase {
 	private final SaveUserPort saveUserPort;
+	private final PasswordEncoder passwordEncoder;
 
-	public UserService(SaveUserPort saveUserPort) {
+	public UserService(SaveUserPort saveUserPort, PasswordEncoder passwordEncoder) {
 		this.saveUserPort = saveUserPort;
+		this.passwordEncoder = passwordEncoder;
 	}
 	@Transactional
 	@Override
 	public void signUp(SignUpCommand signUpCommand) {
 		User user = new User(
 			signUpCommand.getEmail(),
-			signUpCommand.getPassword(),
+			passwordEncoder.encode(signUpCommand.getPassword()),
 			signUpCommand.getNickname(),
 			signUpCommand.getRequestAt(),
 			AuthenticationStatus.SIGNED_OUT
