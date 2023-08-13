@@ -1,8 +1,8 @@
-package com.shcorp.voucher.adapter.out.persistence.memory;
+package com.shcorp.voucher.voucher.adapter.out.persistence.memory;
 
 import java.util.UUID;
 
-import com.shcorp.voucher.domain.VoucherType;
+import com.shcorp.voucher.voucher.domain.VoucherType;
 
 class InMemoryVoucherEntity {
 	private final UUID id;

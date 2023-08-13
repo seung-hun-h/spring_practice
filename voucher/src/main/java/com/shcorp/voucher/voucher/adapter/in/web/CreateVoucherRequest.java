@@ -1,7 +1,7 @@
-package com.shcorp.voucher.adapter.in.web;
+package com.shcorp.voucher.voucher.adapter.in.web;
 
-import com.shcorp.voucher.application.port.in.CreatVoucherCommand;
-import com.shcorp.voucher.domain.VoucherType;
+import com.shcorp.voucher.voucher.application.port.in.CreatVoucherCommand;
+import com.shcorp.voucher.voucher.domain.VoucherType;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;

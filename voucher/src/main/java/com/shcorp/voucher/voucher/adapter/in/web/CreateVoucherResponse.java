@@ -1,6 +1,6 @@
-package com.shcorp.voucher.adapter.in.web;
+package com.shcorp.voucher.voucher.adapter.in.web;
 
-import com.shcorp.voucher.domain.Voucher;
+import com.shcorp.voucher.voucher.domain.Voucher;
 
 public class CreateVoucherResponse{
 	private final VoucherResponse voucher;

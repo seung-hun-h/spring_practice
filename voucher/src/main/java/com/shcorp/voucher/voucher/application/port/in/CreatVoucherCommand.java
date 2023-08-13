@@ -1,7 +1,7 @@
-package com.shcorp.voucher.application.port.in;
+package com.shcorp.voucher.voucher.application.port.in;
 
-import com.shcorp.voucher.domain.SelfValidating;
-import com.shcorp.voucher.domain.VoucherType;
+import com.shcorp.voucher.voucher.domain.SelfValidating;
+import com.shcorp.voucher.voucher.domain.VoucherType;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 

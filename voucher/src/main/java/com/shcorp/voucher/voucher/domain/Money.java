@@ -1,4 +1,4 @@
-package com.shcorp.voucher.domain;
+package com.shcorp.voucher.voucher.domain;
 
 public record Money(int amount) {
 	public static final Money ZERO = new Money(0);

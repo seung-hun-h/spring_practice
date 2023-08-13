@@ -1,4 +1,4 @@
-package com.shcorp.voucher.adapter.out.persistence.memory;
+package com.shcorp.voucher.voucher.adapter.out.persistence.memory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,9 +6,9 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
-import com.shcorp.voucher.application.port.out.GetVoucherPort;
-import com.shcorp.voucher.application.port.out.SaveVoucherPort;
-import com.shcorp.voucher.domain.Voucher;
+import com.shcorp.voucher.voucher.application.port.out.GetVoucherPort;
+import com.shcorp.voucher.voucher.application.port.out.SaveVoucherPort;
+import com.shcorp.voucher.voucher.domain.Voucher;
 
 @Repository
 public class InMemoryVoucherRepository implements GetVoucherPort, SaveVoucherPort {

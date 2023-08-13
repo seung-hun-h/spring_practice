@@ -1,4 +1,4 @@
-package com.shcorp.voucher.adapter.in.web;
+package com.shcorp.voucher.voucher.adapter.in.web;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shcorp.voucher.application.port.in.CreateVoucherUseCase;
-import com.shcorp.voucher.application.port.in.GetVoucherQuery;
-import com.shcorp.voucher.domain.Voucher;
+import com.shcorp.voucher.voucher.application.port.in.CreateVoucherUseCase;
+import com.shcorp.voucher.voucher.application.port.in.GetVoucherQuery;
+import com.shcorp.voucher.voucher.domain.Voucher;
 import jakarta.validation.Valid;
 
 @RequestMapping("/api/v1/vouchers")

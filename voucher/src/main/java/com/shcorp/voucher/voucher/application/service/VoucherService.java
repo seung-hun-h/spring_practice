@@ -1,4 +1,4 @@
-package com.shcorp.voucher.application.service;
+package com.shcorp.voucher.voucher.application.service;
 
 import java.util.List;
 import java.util.Locale;
@@ -7,13 +7,13 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.shcorp.voucher.application.port.in.CreatVoucherCommand;
-import com.shcorp.voucher.application.port.in.CreateVoucherUseCase;
-import com.shcorp.voucher.application.port.in.GetVoucherQuery;
-import com.shcorp.voucher.application.port.out.GetVoucherPort;
-import com.shcorp.voucher.application.port.out.SaveVoucherPort;
-import com.shcorp.voucher.domain.Voucher;
-import com.shcorp.voucher.domain.VoucherType;
+import com.shcorp.voucher.voucher.application.port.in.CreatVoucherCommand;
+import com.shcorp.voucher.voucher.application.port.in.CreateVoucherUseCase;
+import com.shcorp.voucher.voucher.application.port.in.GetVoucherQuery;
+import com.shcorp.voucher.voucher.application.port.out.GetVoucherPort;
+import com.shcorp.voucher.voucher.application.port.out.SaveVoucherPort;
+import com.shcorp.voucher.voucher.domain.Voucher;
+import com.shcorp.voucher.voucher.domain.VoucherType;
 
 @Service
 public class VoucherService implements CreateVoucherUseCase, GetVoucherQuery {

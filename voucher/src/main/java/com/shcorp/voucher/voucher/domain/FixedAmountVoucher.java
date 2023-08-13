@@ -1,4 +1,4 @@
-package com.shcorp.voucher.domain;
+package com.shcorp.voucher.voucher.domain;
 
 import java.util.Objects;
 

@@ -1,6 +1,4 @@
-package com.shcorp.voucher.domain;
-
-import java.util.Objects;
+package com.shcorp.voucher.voucher.domain;
 
 class DefaultAmountVoucher implements Voucher {
 	private final String code;

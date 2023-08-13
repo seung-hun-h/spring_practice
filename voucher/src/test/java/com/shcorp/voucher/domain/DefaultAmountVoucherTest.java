@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import com.shcorp.voucher.voucher.domain.DefaultAmountVoucher;
+import com.shcorp.voucher.voucher.domain.Money;
+
 class DefaultAmountVoucherTest {
 	@Test
 	void testApplyDiscount() {
