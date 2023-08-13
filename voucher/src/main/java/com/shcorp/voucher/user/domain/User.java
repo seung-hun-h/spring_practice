@@ -18,8 +18,9 @@ public class User {
 		this.authenticationStatus = authenticationStatus;
 	}
 
-	public void changeNickname(String nickname) {
+	public void changeNickname(String nickname, LocalDateTime updatedAt) {
 		this.nickname = nickname;
+		this.updatedAt = updatedAt;
 	}
 
 	public void signIn(String password, LocalDateTime signedInAt) {
