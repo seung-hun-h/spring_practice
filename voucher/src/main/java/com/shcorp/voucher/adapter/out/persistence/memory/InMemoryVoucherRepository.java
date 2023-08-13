@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import com.shcorp.voucher.application.port.out.GetVoucherPort;
 import com.shcorp.voucher.application.port.out.SaveVoucherPort;
 import com.shcorp.voucher.domain.Voucher;
-import com.shcorp.voucher.domain.VoucherType;
 
 @Repository
 public class InMemoryVoucherRepository implements GetVoucherPort, SaveVoucherPort {
