@@ -13,12 +13,12 @@ import com.shcorp.voucher.user.domain.AuthenticationStatus;
 import com.shcorp.voucher.user.domain.User;
 
 @Service
-public class AuthenticationService implements SignUpUseCase, SignInUseCase {
+class AuthenticationService implements SignUpUseCase, SignInUseCase {
 	private final SaveUserPort saveUserPort;
 	private final GetUserPort getUserPort;
 	private final PasswordEncoder passwordEncoder;
 
-	public AuthenticationService(
+	AuthenticationService(
 		SaveUserPort saveUserPort,
 		GetUserPort getUserPort,
 		PasswordEncoder passwordEncoder
@@ -27,6 +27,7 @@ public class AuthenticationService implements SignUpUseCase, SignInUseCase {
 		this.getUserPort = getUserPort;
 		this.passwordEncoder = passwordEncoder;
 	}
+
 	@Transactional
 	@Override
 	public void signUp(SignUpCommand signUpCommand) {

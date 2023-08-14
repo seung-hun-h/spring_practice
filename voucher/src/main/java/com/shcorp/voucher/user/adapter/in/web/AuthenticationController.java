@@ -16,17 +16,17 @@ import jakarta.validation.Valid;
 
 @RequestMapping("/api/v1/users")
 @RestController
-public class AuthenticationController {
+class AuthenticationController {
 	private final SignInUseCase signInUseCase;
 	private final SignUpUseCase signUpUseCase;
 
-	public AuthenticationController(SignInUseCase signInUseCase, SignUpUseCase signUpUseCase) {
+	AuthenticationController(SignInUseCase signInUseCase, SignUpUseCase signUpUseCase) {
 		this.signInUseCase = signInUseCase;
 		this.signUpUseCase = signUpUseCase;
 	}
 
 	@PostMapping
-	public ResponseEntity<SignUpResponse> signUp(@Valid SignUpRequest signUpRequest) {
+	ResponseEntity<SignUpResponse> signUp(@Valid SignUpRequest signUpRequest) {
 		SignUpCommand signUpCommand = new SignUpCommand(
 			signUpRequest.email(),
 			signUpRequest.nickname(),
@@ -45,7 +45,7 @@ public class AuthenticationController {
 	}
 
 	@PostMapping("/sign-in")
-	public ResponseEntity<SignInResponse> signIn(@Valid SignInRequest signInRequest) {
+	ResponseEntity<SignInResponse> signIn(@Valid SignInRequest signInRequest) {
 		SignInCommand signInCommand = new SignInCommand(
 			signInRequest.email(),
 			signInRequest.password(),

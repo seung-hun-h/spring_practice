@@ -5,16 +5,16 @@ import java.util.UUID;
 
 import com.shcorp.voucher.user.domain.AuthenticationStatus;
 
-public class InMemoryUserEntity {
-	private UUID id;
-	private String email;
-	private String password;
-	private String nickname;
-	private LocalDateTime updatedAt;
-	private LocalDateTime signedInAt;
-	private AuthenticationStatus authenticationStatus;
+class InMemoryUserEntity {
+	private final UUID id;
+	private final String email;
+	private final String password;
+	private final String nickname;
+	private final LocalDateTime updatedAt;
+	private final LocalDateTime signedInAt;
+	private final AuthenticationStatus authenticationStatus;
 
-	public InMemoryUserEntity(
+	InMemoryUserEntity(
 		UUID id,
 		String email,
 		String password,
@@ -32,31 +32,31 @@ public class InMemoryUserEntity {
 		this.authenticationStatus = authenticationStatus;
 	}
 
-	public UUID getId() {
+	UUID getId() {
 		return id;
 	}
 
-	public String getEmail() {
+	String getEmail() {
 		return email;
+	}
+
+	String getNickname() {
+		return nickname;
+	}
+
+	LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+	AuthenticationStatus getAuthenticationStatus() {
+		return authenticationStatus;
 	}
 
 	public String getPassword() {
 		return password;
 	}
 
-	public String getNickname() {
-		return nickname;
-	}
-
-	public LocalDateTime getUpdatedAt() {
-		return updatedAt;
-	}
-
 	public LocalDateTime getSignedInAt() {
 		return signedInAt;
-	}
-
-	public AuthenticationStatus getAuthenticationStatus() {
-		return authenticationStatus;
 	}
 }

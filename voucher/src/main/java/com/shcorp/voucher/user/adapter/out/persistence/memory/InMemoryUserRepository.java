@@ -1,8 +1,5 @@
 package com.shcorp.voucher.user.adapter.out.persistence.memory;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
@@ -15,7 +12,7 @@ import com.shcorp.voucher.user.application.port.out.SaveUserPort;
 import com.shcorp.voucher.user.domain.User;
 
 @Repository
-public class InMemoryUserRepository implements SaveUserPort, GetUserPort {
+class InMemoryUserRepository implements SaveUserPort, GetUserPort {
 	private static final Map<UUID, InMemoryUserEntity> users = new ConcurrentHashMap<>();
 
 	@Override
@@ -55,9 +52,10 @@ public class InMemoryUserRepository implements SaveUserPort, GetUserPort {
 				InMemoryUserEntity inMemoryUserEntity = entityEntry.getValue();
 				return Optional.of(new User(
 					inMemoryUserEntity.getEmail(),
-					null,
+					inMemoryUserEntity.getPassword(),
 					inMemoryUserEntity.getNickname(),
 					inMemoryUserEntity.getUpdatedAt(),
+					inMemoryUserEntity.getSignedInAt(),
 					inMemoryUserEntity.getAuthenticationStatus()
 				));
 			}

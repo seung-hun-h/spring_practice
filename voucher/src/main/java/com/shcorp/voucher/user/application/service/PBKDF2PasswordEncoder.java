@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PBKDF2PasswordEncoder implements PasswordEncoder {
+class PBKDF2PasswordEncoder implements PasswordEncoder {
 	public static final String ID = "$31$";
 	private static final String ALGORITHM = "PBKDF2WithHmacSHA1";
 	private static final int SIZE = 128;

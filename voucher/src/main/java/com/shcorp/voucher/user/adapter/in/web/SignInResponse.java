@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import com.shcorp.voucher.user.domain.AuthenticationStatus;
 
-public record SignInResponse(
+record SignInResponse(
 	String email,
 	String nickname,
 	LocalDateTime updatedAt,
