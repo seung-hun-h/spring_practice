@@ -11,10 +11,15 @@ public class User {
 	private AuthenticationStatus authenticationStatus;
 
 	public User(String email, String password, String nickname, LocalDateTime updatedAt, AuthenticationStatus authenticationStatus) {
+		this(email, password, nickname, updatedAt, null, authenticationStatus);
+	}
+
+	public User(String email, String password, String nickname, LocalDateTime updatedAt, LocalDateTime signedInAt, AuthenticationStatus authenticationStatus) {
 		this.email = email;
 		this.password = password;
 		this.nickname = nickname;
 		this.updatedAt = updatedAt;
+		this.signedInAt = signedInAt;
 		this.authenticationStatus = authenticationStatus;
 	}
 
